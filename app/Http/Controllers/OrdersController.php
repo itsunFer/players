@@ -29,6 +29,13 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required'],
+            'team' => ['required'],
+            'gender' => ['required'],
+            'date' => ['required']
+        ]);
+    
         $order = new Orders();
         $order->name = $request ->name;
         $order->team = $request ->team;

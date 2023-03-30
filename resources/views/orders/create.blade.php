@@ -15,28 +15,28 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
         </div>
         @error('name')
             <h4>{{ $message }}</h4>
         @enderror
         <div class="mb-3">
             <label for="team" class="form-label">Equipo</label>
-            <input type="text" class="form-control" name="team">
+            <input type="text" class="form-control" name="team"value="{{ old('team') }}">
         </div>
         @error('team')
             <h4>{{ $message }}</h4>
         @enderror
         <div class="mb-3">
             <label for="gender" class="form-label">Genero</label>
-            <input type="text" class="form-control" name="gender">
+            <input type="text" class="form-control" name="gender"value="{{ old('gender') }}">
         </div>
-        @error('team')
+        @error('gender')
             <h4>{{ $message }}</h4>
         @enderror
         <div class="mb-3">
             <label for="date" class="form-label">Fecha de ingreso</label>
-            <input type="date" class="form-control" name="date">
+            <input type="date" class="form-control" name="date"value="{{ old('date') }}">
         </div>
         @error('date')
             <h4>{{ $message }}</h4>
