@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OrdersController;
-
+use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\TournamentsController;
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,5 +28,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::resource('orders', OrdersController::class);
+    Route::resource('players', PlayersController::class);
+    Route::resource('teams', TeamsController::class);
+    Route::resource('tournaments', TournamentsController::class);
 });

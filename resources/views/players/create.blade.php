@@ -1,3 +1,4 @@
+@extends('navbar')
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,9 +10,9 @@
 <body>
     <div class="container text-center p-3 text-bg-light">
     <h1>Nuevo jugador</h1>
-    <a href="/orders" class="btn btn-warning btn-sm" > Salir</a><br>
+    <a href="/players" class="btn btn-warning btn-sm" > Salir</a><br>
 
-    <form action="/orders" method="POST">
+    <form action="/players" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
@@ -21,10 +22,15 @@
             <h4>{{ $message }}</h4>
         @enderror
         <div class="mb-3">
-            <label for="team" class="form-label">Equipo</label>
-            <input type="text" class="form-control" name="team"value="{{ old('team') }}">
+            <label for="team_id" class="form-label">Equipo</label>
+            <select class="form-control" name="team_id"value="{{ old('team_id') }}">
+                <option value="">Seleccionar equipo: </option>
+                @foreach($teams as $team)
+                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                @endforeach
+            </select>
         </div>
-        @error('team')
+        @error('team_id')
             <h4>{{ $message }}</h4>
         @enderror
         <div class="mb-3">

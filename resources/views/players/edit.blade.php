@@ -1,3 +1,4 @@
+@extends('navbar')
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -9,33 +10,42 @@
     <body>
         <div class="container text-center p-3 text-bg-light">
         <h1>Editar jugador</h1>
-        <form action="{{ route('orders.update', $order) }}" method="POST">
+        <form action="{{ route('players.update', $player) }}" method="POST">
             @csrf
             @method('PATCH')
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="name" value="{{ $order->name }}">
+                <input type="text" class="form-control" name="name" value="{{ $player->name }}">
             </div>
             @error('name')
                 <h4>{{ $message }}</h4>
             @enderror
             <div class="mb-3">
-                <label for="team" class="form-label">Equipo</label>
-                <input type="text" class="form-control" name="team" value="{{ $order->team }}">
+                <label for="team_id" class="form-label">Equipo</label>
+                <select class="form-control" name="team_id">
+                @if($player->team)
+                    <option value="{{ $player->team->id }}">{{ $player->team->name }}</option>
+                @endif   
+                    @foreach($teams as $team)
+                    @if($team)
+                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                    @endif
+                    @endforeach
+                </select>
             </div>
-            @error('team')
+            @error('team_id')
                 <h4>{{ $message }}</h4>
             @enderror
             <div class="mb-3">
                 <label for="gender" class="form-label">Genero</label>
-                <input type="text" class="form-control" name="gender" value="{{ $order->gender }}">
+                <input type="text" class="form-control" name="gender" value="{{ $player->gender }}">
             </div>
-            @error('team')
+            @error('gender')
                 <h4>{{ $message }}</h4>
             @enderror
             <div class="mb-3">
                 <label for="date" class="form-label">Fecha de ingreso</label>
-                <input type="date" class="form-control" name="date" value="{{ $order->date }}">
+                <input type="date" class="form-control" name="date" value="{{ $player->date }}">
             </div>
             @error('date')
                 <h4>{{ $message }}</h4>

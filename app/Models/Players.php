@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Orders extends Model
+class Players extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public function team()
+    {
+        return $this->belongsTo(Teams::class, 'team_id');
+    }
 }
